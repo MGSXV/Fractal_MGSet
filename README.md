@@ -1,0 +1,2 @@
+# Fractal_MGSet
+This project is one of 42Network graphic projects. We are going to use the school graphical library: the MiniLibX! This library was developed internally and includes basic necessary tools to open a window, create images and deal with keyboard and mouse events. This will be the opportunity for you to discover or use the mathematical notion of complex numbers and to take a peek at the concept of optimization in computer graphics and practice event handling.
