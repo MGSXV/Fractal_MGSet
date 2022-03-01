@@ -5,23 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/01 19:53:59 by sel-kham         ###   ########.fr        #
+#    Created: 2021/12/13 17:39:56 by sel-kham          #+#    #+#              #
+#    Updated: 2021/12/15 01:24:26 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror
 
-NAME := fractol
+HEADER := ft_printf.h
 
-PRINTF_DIR := ft_printf
-PRINTF := $(PRINTF_DIR)/libftprintf.a
+NAME := libftprintf.a
 
-################# COLORS #################
-RED := \033[0;31m
-WHITE := \033[0;37m
-GREEN := \033[0;32m
+OBJ_DIR := Object_Files
 
-.PHONY: all clean fclean re bonus
+SRC_FILES_M := ft_printf.c\
+			ft_printf_utils.c\
+			ft_putnbr_base.c\
+			ft_putchar.c\
+			ft_putstr.c\
+			
+OBJ_FILES_M := $(addprefix $(OBJ_DIR)/, $(SRC_FILES_M:.c=.o))
+
+.PHONY: clean fclean all re
 
 all: $(NAME)
+
+$(NAME): $(OBJ_FILES_M) $(HEADER)
+	ar -rcs $(NAME) $(OBJ_FILES_M)
+
+$(OBJ_DIR)/%.o:%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	rm -rf $(OBJ_DIR)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
