@@ -6,17 +6,27 @@
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/01 21:18:55 by sel-kham         ###   ########.fr        #
+#    Updated: 2022/03/02 18:12:02 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 
 NAME := fractol
-SRC := fractol.c
+HEADER := fractol.h
 
 PRINTF_DIR := ft_printf
 PRINTF := $(PRINTF_DIR)/libftprintf.a
+
+#HANDLERS_DIR := handlers
+#HANDLERS := $(HANDLERS_DIR)/libftprintf.a
+HELPERS_DIR := helpers
+HELPERS := $(HELPERS_DIR)/ft_error.c
+OBJ_DIR := objects
+
+SRC := fractol.c $(HELPERS)
+OBJ := $(SRC:.c=.o)
+
 
 ################# COLORS #################
 RED := \033[0;31m
@@ -26,9 +36,13 @@ GREEN := \033[0;32m
 .PHONY: all clean fclean re bonus
 
 all: $(NAME)
-	@echo "$(GREEN)Making $(WHITE)fractol file..."
-	$(CC) $(FLAGS) $(SRC) $(PRINTF) -o $(NAME)
 
+$(NAME): $(OBJ) $(PRINTF) $(HEADER)
+	@ # @echo "$(GREEN)Making $(WHITE)fractol file..."
+	$(CC) $(CFLAGS) $(addprefix $(OBJ_DIR)/,$(notdir $(OBJ))) $(PRINTF) -o $(NAME)
+
+%.o: %.c
+	cc $< -c -o $(OBJ_DIR)/$(notdir $@)
 
 $(PRINTF): $(shell find $(PRINTF_DIR) -name "*.c" -type f)
 	@echo "$(GREEN)Making $(WHITE)ft_printf files..."
@@ -36,7 +50,7 @@ $(PRINTF): $(shell find $(PRINTF_DIR) -name "*.c" -type f)
 
 clean:
 	@echo "$(RED)Removing $(WHITE)Fractol object files..."
-	@rm -rf *.o
+	@rm -rf $(OBJ_DIR)/*.o
 	@echo "$(RED)Removing $(WHITE)ft_printf object files..."
 	@$(MAKE) -C $(PRINTF_DIR)/ clean
 
