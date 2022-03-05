@@ -6,15 +6,18 @@
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/04 22:55:37 by sel-kham         ###   ########.fr        #
+#    Updated: 2022/03/05 03:49:24 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# FLAGS
 CFLAGS := -Wall -Wextra -Werror
 MLX_FLAGS := -lmlx -framework OpenGL -framework AppKit
 
+# DIRECTORIES
 INC_DIR := includes
 SRC_DIR := src
+SCC := helpers
 OBJ_DIR := obj
 HEAD_DIR := $(INC_DIR)/headers
 LIBFT_DIR := $(INC_DIR)/libft
@@ -25,8 +28,9 @@ NAME := fractol
 PRINTF := $(PRINTF_DIR)/libftprintf.a
 LIBFT := $(LIBFT_DIR)/libft.a
 HEADERS := $(HEAD_DIR)/fractol.h $(HEAD_DIR)/types.h
-SRC := $(shell find $(SRC_DIR) -name "*.c" -type f)
-OBJ = $(OBJ_DIR)/$(notdir $(SRC:.c=.o))
+SRC := $(shell find $(SRC_DIR)/*/ -name "*.c" -type f)
+OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
+MAIN := $(SRC_DIR)/main.c
 
 ################# COLORS #################
 RED := \033[0;31m
@@ -36,16 +40,15 @@ SIGNATURE := $(WHITE)\n███████ ██████   ████�
 
 .PHONY: all clean fclean re bonus
 
-all: $(NAME)
+all: $(NAME) 
 	@echo "$(SIGNATURE)"
 
-$(NAME): $(OBJ) $(PRINTF) $(LIBFT) $(HEADERS)
+$(NAME): $(OBJ) $(PRINTF) $(LIBFT) $(HEADERS) $(MAIN)
 	@echo "$(GREEN)Making $(WHITE)fractol file..."
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(PRINTF) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(PRINTF) $(LIBFT) $(MAIN) -o $(NAME)
 
-$(OBJ): $(SRC)
-	@echo "$(GREEN)Making $(WHITE)object files..."
-	@$(CC) $< -c -o $(OBJ_DIR)/$(notdir $@)
+$(OBJ_DIR)/%.o:	src/*/%.c
+	@cc -c $< -o $(OBJ_DIR)/$(notdir $@)
 
 $(PRINTF): $(shell find $(PRINTF_DIR) -name "*.c" -type f)
 	@echo "$(GREEN)Making $(WHITE)ft_printf files..."
@@ -70,3 +73,5 @@ fclean: clean
 	@$(MAKE) -C $(PRINTF_DIR)/ fclean
 	@echo "$(RED)Removing $(WHITE)libft static library file..."
 	@$(MAKE) -C $(LIBFT_DIR)/ fclean
+	
+re: fclean all
