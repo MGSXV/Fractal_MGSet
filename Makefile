@@ -6,7 +6,7 @@
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/05 03:49:24 by sel-kham         ###   ########.fr        #
+#    Updated: 2022/03/07 20:06:30 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,18 +17,22 @@ MLX_FLAGS := -lmlx -framework OpenGL -framework AppKit
 # DIRECTORIES
 INC_DIR := includes
 SRC_DIR := src
-SCC := helpers
 OBJ_DIR := obj
 HEAD_DIR := $(INC_DIR)/headers
 LIBFT_DIR := $(INC_DIR)/libft
 PRINTF_DIR := $(INC_DIR)/ft_printf
+ROUTE := $(SRC_DIR)/route
+HELPERS := $(SRC_DIR)/helpers
+HANDLERS := $(SRC_DIR)/handlers
 
 NAME := fractol
 
 PRINTF := $(PRINTF_DIR)/libftprintf.a
 LIBFT := $(LIBFT_DIR)/libft.a
 HEADERS := $(HEAD_DIR)/fractol.h $(HEAD_DIR)/types.h
-SRC := $(shell find $(SRC_DIR)/*/ -name "*.c" -type f)
+SRC := $(HELPERS)/ft_error_exit.c\
+		$(HANDLERS)/handler.c\
+		$(ROUTE)/router.c
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 MAIN := $(SRC_DIR)/main.c
 
@@ -40,15 +44,22 @@ SIGNATURE := $(WHITE)\n███████ ██████   ████�
 
 .PHONY: all clean fclean re bonus
 
-all: $(NAME) 
+all: $(NAME)
 	@echo "$(SIGNATURE)"
 
 $(NAME): $(OBJ) $(PRINTF) $(LIBFT) $(HEADERS) $(MAIN)
 	@echo "$(GREEN)Making $(WHITE)fractol file..."
 	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJ) $(PRINTF) $(LIBFT) $(MAIN) -o $(NAME)
 
-$(OBJ_DIR)/%.o:	src/*/%.c
-	@cc -c $< -o $(OBJ_DIR)/$(notdir $@)
+$(OBJ_DIR)/%.o: $(HELPERS)/%.c
+	@mkdir -p obj
+	@$(CC) -c $< -o $@
+$(OBJ_DIR)/%.o: $(HANDLERS)/%.c
+	@mkdir -p obj
+	@$(CC) -c $< -o $@
+$(OBJ_DIR)/%.o: $(ROUTE)/%.c
+	@mkdir -p obj
+	@$(CC) -c $< -o $@
 
 $(PRINTF): $(shell find $(PRINTF_DIR) -name "*.c" -type f)
 	@echo "$(GREEN)Making $(WHITE)ft_printf files..."
