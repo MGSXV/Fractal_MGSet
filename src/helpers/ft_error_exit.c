@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:38:24 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 08:47:54 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/08 22:48:09 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ void	ft_error_exit(char *err_msg, t_data *data)
 		mlx_destroy_window(data->mlx_p, data->win_p);
 	if (data->mlx_p)
 		free(data->mlx_p);
+	if (data->img_p)
+		free(data->img_p);
 	exit(EXIT_FAILURE);
 }

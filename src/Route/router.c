@@ -6,20 +6,20 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:10:34 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 08:26:35 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/08 23:26:25 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/headers/fractol.h"
 
-int	ft_events_router(int keynum, t_data *data)
+int	ft_events_router(int keynum, t_img_buff *data)
 {
 	if (keynum == ESC_KEY)
 		ft_close_window(data);
 	return (0);
 }
 
-void	ft_router(char *flag, t_data *data)
+void	ft_router(char *flag, t_img_buff *data)
 {
 	if (!ft_strncmp(flag, "-m", ft_strlen(flag)))
 		ft_mandelbrot(data);

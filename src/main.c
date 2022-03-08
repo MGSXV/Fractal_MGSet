@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:28:53 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 08:47:29 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/08 23:25:16 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	main(int c, char **v)
 {
-	char	*flag;
-	t_data	data;
+	char		*flag;
+	t_img_buff	data;
 
-	data.mlx_p = NULL;
 	flag = "--help";
 	if (c != 2)
 		ft_error_exit("Error: No valid argument was provided.\
