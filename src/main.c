@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:28:53 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 06:10:09 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/08 08:47:29 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,5 @@ Try \"--help\" for more information.\n", &data);
 	}
 	else
 		ft_router(v[1], &data);
-	// mlx_hook(data.mlx_p, ON_KEYDOWN, 0, ft_events_router, &data);
-	// mlx_loop(data.mlx_p);
 	return (0);
 }
