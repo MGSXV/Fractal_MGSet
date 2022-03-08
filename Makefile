@@ -6,7 +6,7 @@
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/07 20:06:30 by sel-kham         ###   ########.fr        #
+#    Updated: 2022/03/08 06:16:08 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ PRINTF_DIR := $(INC_DIR)/ft_printf
 ROUTE := $(SRC_DIR)/route
 HELPERS := $(SRC_DIR)/helpers
 HANDLERS := $(SRC_DIR)/handlers
+FREACTALS := $(SRC_DIR)/fractals
+INIT := $(SRC_DIR)/init
 
 NAME := fractol
 
@@ -31,8 +33,11 @@ PRINTF := $(PRINTF_DIR)/libftprintf.a
 LIBFT := $(LIBFT_DIR)/libft.a
 HEADERS := $(HEAD_DIR)/fractol.h $(HEAD_DIR)/types.h
 SRC := $(HELPERS)/ft_error_exit.c\
-		$(HANDLERS)/handler.c\
-		$(ROUTE)/router.c
+		$(HANDLERS)/keyboard_events.c\
+		$(ROUTE)/router.c\
+		$(INIT)/window_init.c\
+		$(FREACTALS)/ft_madelbrot_set.c
+
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 MAIN := $(SRC_DIR)/main.c
 
@@ -53,13 +58,19 @@ $(NAME): $(OBJ) $(PRINTF) $(LIBFT) $(HEADERS) $(MAIN)
 
 $(OBJ_DIR)/%.o: $(HELPERS)/%.c
 	@mkdir -p obj
-	@$(CC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 $(OBJ_DIR)/%.o: $(HANDLERS)/%.c
 	@mkdir -p obj
-	@$(CC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 $(OBJ_DIR)/%.o: $(ROUTE)/%.c
 	@mkdir -p obj
-	@$(CC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(INIT)/%.c
+	@mkdir -p obj
+	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(FREACTALS)/%.c
+	@mkdir -p obj
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(PRINTF): $(shell find $(PRINTF_DIR) -name "*.c" -type f)
 	@echo "$(GREEN)Making $(WHITE)ft_printf files..."
