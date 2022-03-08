@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:53:14 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 04:30:21 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/08 23:24:24 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ typedef struct s_data
 	void	*mlx_p;
 	void	*img_p;
 }	t_data;
+// bpp refers to bits per pixel
+typedef struct __image_buffer__
+{
+	t_data	*data_buff;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img_buff;
 
 enum {
 	ON_KEYDOWN = 2,
