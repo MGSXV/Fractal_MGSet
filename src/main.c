@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:28:53 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 23:25:16 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/10 00:04:34 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	main(int c, char **v)
 	t_img_buff	data;
 
 	flag = "--help";
+	data.data_buff.mlx_p = NULL;
+	data.data_buff.win_p = NULL;
+	data.data_buff.img_p = NULL;
 	if (c != 2)
-		ft_error_exit("Error: No valid argument was provided.\
+		ft_error_exit("Error: No valid argument was provided. \
 Try \"--help\" for more information.\n", &data);
 	if (!ft_strncmp(v[1], flag, ft_strlen(flag)))
 	{
