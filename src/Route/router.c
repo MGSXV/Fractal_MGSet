@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:10:34 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 23:26:25 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/09 20:30:57 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_events_router(int keynum, t_img_buff *data)
 {
-	if (keynum == ESC_KEY)
+	if (keynum == ESC_KEY || keynum == DESTROY_NOTIFY)
 		ft_close_window(data);
 	return (0);
 }
