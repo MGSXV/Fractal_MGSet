@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 16:16:24 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/08 23:26:15 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:42:01 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	ft_new_window(t_img_buff *data);
 void	ft_mandelbrot(t_img_buff *data);
 int		ft_events_router(int keynum, t_img_buff *data);
 int		ft_close_window(t_img_buff *data);
+void	mg_pixel_put(t_img_buff *data, int x, int y, int color);
 
 #endif
