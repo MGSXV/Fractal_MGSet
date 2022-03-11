@@ -6,7 +6,7 @@
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/09 02:27:33 by sel-kham         ###   ########.fr        #
+#    Updated: 2022/03/10 17:43:28 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME := fractol
 PRINTF := $(PRINTF_DIR)/libftprintf.a
 LIBFT := $(LIBFT_DIR)/libft.a
 HEADERS := $(HEAD_DIR)/fractol.h $(HEAD_DIR)/types.h
-SRC := $(HELPERS)/ft_error_exit.c\
+SRC := $(HELPERS)/ft_error_exit.c $(HELPERS)/mg_pixel_put.c\
 		$(HANDLERS)/keyboard_events.c $(HANDLERS)/mouse_events.c\
 		$(ROUTE)/router.c\
 		$(INIT)/window_init.c\
