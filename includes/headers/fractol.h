@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 16:16:24 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/11 17:04:19 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/11 20:23:57 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # include "mlx.h"
 # include<math.h>
 
-void	    ft_error_exit(char *err_msg, t_img_buff *data);
-void	    ft_free(t_img_buff *data);
-void	    ft_router(char *flag, t_img_buff *data);
-void	    ft_init_data(t_img_buff *data);
-void	    ft_new_window(t_img_buff *data);
-void	    ft_mandelbrot(t_img_buff *data);
-int		    ft_events_router(int keynum, t_img_buff *data);
-int		    ft_close_window(t_img_buff *data);
-void	    mg_pixel_put(t_img_buff *data, int x, int y, int color);
+void		ft_error_exit(char *err_msg, t_img_buff *data);
+void		ft_free(t_img_buff *data);
+void		ft_router(char *flag, t_img_buff *data);
+void		ft_init_data(t_img_buff *data);
+void		ft_new_window(t_img_buff *data);
+void		ft_mandelbrot(t_img_buff *data);
+int			ft_events_router(int keynum, t_img_buff *data);
+int			ft_close_window(t_img_buff *data);
+void		mg_pixel_put(t_img_buff *data, int x, int y, int color);
 t_complex	complex_addition(t_complex cn1, t_complex cn2);
-void	    complex_init(t_complex *cn);
+t_complex	complex_init(double r_p, double i_p);
 
 #endif

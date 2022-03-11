@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:12:02 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/10 22:38:34 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/11 20:22:09 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_init_data(t_img_buff *data)
 void	ft_new_window(t_img_buff *data)
 {
 	ft_init_data(data);
-	data->addr = mlx_get_data_addr(data->data_buff.img_p, &data->bpp, &data->line_len, &data->endian);
+	data->addr = mlx_get_data_addr(data->data_buff.img_p, &data->bpp,
+			&data->line_len, &data->endian);
 	mlx_hook(data->data_buff.win_p, ON_KEYDOWN, 0, ft_events_router, data);
 	mlx_hook(data->data_buff.win_p, DESTROY_NOTIFY, 0, ft_close_window, data);
 }
