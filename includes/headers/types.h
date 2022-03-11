@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:53:14 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/09 02:23:18 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:59:45 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,11 @@ typedef struct __image_buffer__
 	int		line_len;
 	int		endian;
 }	t_img_buff;
+
+typedef struct s_complex
+{
+	double	r_part;
+	double	i_part;
+}	t_complex;
 
 #endif
