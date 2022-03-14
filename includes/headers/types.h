@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:53:14 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/14 04:34:03 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:30:24 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ typedef struct s_complex
 	double	i_part;
 }	t_complex;
 
-typedef struct  s_color
+typedef struct s_color
 {
-    unsigned char	R;
-	unsigned char	G;
-	unsigned char	B;
-}   t_color;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}	t_color;
 
 #endif
