@@ -6,20 +6,41 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 22:26:20 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/14 04:33:14 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/14 23:20:47 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/headers/fractol.h"
 
+static int	calculate_mandelbrot(t_coor *coord)
+{
+	t_complex	z;
+	t_complex	c;
+	int			iteration_numb;
+	t_zoom		z_xy;
+
+	z_xy.zoom = 1;
+	z_xy.move_x = -.5;
+	z_xy.move_y = 0;
+	iteration_numb = 0;
+	z = complex_init(0, 0);
+	c.r_part = 1.5 * (coord->x - WINDOW_WIDTH / 2) / (0.5 * z_xy.zoom * WINDOW_WIDTH) + z_xy.move_x;
+	c.i_part = (coord->y - WINDOW_HEIGHT / 2) / (0.5 * z_xy.zoom * WINDOW_HEIGHT) + z_xy.move_y;
+	while (iteration_numb < MAX_ITERATIONS)
+	{
+		z = complex_addition(complex_square(z), c);
+		if (((z.r_part * z.r_part) + (z.i_part * z.i_part)) > 4)
+			break ;
+		iteration_numb++;
+	}
+	return (iteration_numb);
+}
+
 void	ft_mandelbrot(t_img_buff *data)
 {
 	t_coor		coord;
-	t_complex	new;
-	t_complex	old;
 	int			i;
 
-	double zoom = 1, moveX = -0.5, moveY = 0; // Edit later
 	coord.y = 0;
 	ft_new_window(data);
 	while (coord.y < WINDOW_HEIGHT)
@@ -27,17 +48,7 @@ void	ft_mandelbrot(t_img_buff *data)
 		coord.x = 0;
 		while (coord.x < WINDOW_WIDTH)
 		{
-			new = complex_init(0, 0);
-			old.r_part =  1.5 * (coord.x - WINDOW_WIDTH / 2) / (0.5 * zoom * WINDOW_WIDTH) + moveX;
-			old.i_part =  (coord.y - WINDOW_HEIGHT / 2) / (0.5 * zoom * WINDOW_HEIGHT) + moveY;
-			i = 0;
-			while (i < MAX_ITERATIONS)
-			{
-				new = complex_addition(complex_square(new), old);
-				if (((new.r_part * new.r_part) + (new.i_part * new.i_part)) > 4)
-					break;
-				i++;
-			}
+			i = calculate_mandelbrot(&coord);
 			if (i < MAX_ITERATIONS)
 				mg_pixel_put(data, coord.x, coord.y, 0x00FFFFFF);
 			coord.x++;
