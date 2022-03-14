@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:53:14 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/14 21:30:24 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/14 23:18:38 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,12 @@ typedef struct s_color
 	unsigned char	g;
 	unsigned char	b;
 }	t_color;
+
+typedef struct s_zoom
+{
+	double	zoom;
+	double	move_x;
+	double	move_y;
+}	t_zoom;
 
 #endif
