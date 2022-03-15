@@ -6,34 +6,35 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 22:26:20 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/14 23:20:47 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/15 17:18:00 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/headers/fractol.h"
 
-static int	calculate_mandelbrot(t_coor *coord)
+static int	calculate_mandelbrot(t_coor *coord, t_img_buff *data)
 {
 	t_complex	z;
 	t_complex	c;
-	int			iteration_numb;
-	t_zoom		z_xy;
+	int			i;
 
-	z_xy.zoom = 1;
-	z_xy.move_x = -.5;
-	z_xy.move_y = 0;
-	iteration_numb = 0;
+	data->screen.zoom = 1;
+	data->screen.move_x = -.5;
+	data->screen.move_y = 0;
+	i = 0;
 	z = complex_init(0, 0);
-	c.r_part = 1.5 * (coord->x - WINDOW_WIDTH / 2) / (0.5 * z_xy.zoom * WINDOW_WIDTH) + z_xy.move_x;
-	c.i_part = (coord->y - WINDOW_HEIGHT / 2) / (0.5 * z_xy.zoom * WINDOW_HEIGHT) + z_xy.move_y;
-	while (iteration_numb < MAX_ITERATIONS)
+	c.r_part = 1.5 * (coord->x - data->screen.window_width / 2)
+		/ (0.5 * data->screen.zoom * data->screen.window_width) + data->screen.move_x;
+	c.i_part = 1.5 * (coord->y - data->screen.window_height / 2)
+		/ (0.5 * data->screen.zoom * data->screen.window_height) + data->screen.move_y;
+	while (i < data->screen.max_iterations)
 	{
 		z = complex_addition(complex_square(z), c);
 		if (((z.r_part * z.r_part) + (z.i_part * z.i_part)) > 4)
 			break ;
-		iteration_numb++;
+		i++;
 	}
-	return (iteration_numb);
+	return (i);
 }
 
 void	ft_mandelbrot(t_img_buff *data)
@@ -41,15 +42,18 @@ void	ft_mandelbrot(t_img_buff *data)
 	t_coor		coord;
 	int			i;
 
+	data->screen.window_height = 920;
+	data->screen.window_width = 920;
+	data->screen.max_iterations = 300;
 	coord.y = 0;
 	ft_new_window(data);
-	while (coord.y < WINDOW_HEIGHT)
+	while (coord.y < data->screen.window_height)
 	{
 		coord.x = 0;
-		while (coord.x < WINDOW_WIDTH)
+		while (coord.x < data->screen.window_width)
 		{
-			i = calculate_mandelbrot(&coord);
-			if (i < MAX_ITERATIONS)
+			i = calculate_mandelbrot(&coord, data);
+			if (i < data->screen.max_iterations)
 				mg_pixel_put(data, coord.x, coord.y, 0x00FFFFFF);
 			coord.x++;
 		}
