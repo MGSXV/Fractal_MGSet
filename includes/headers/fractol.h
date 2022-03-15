@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 16:16:24 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/11 22:12:47 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:07:55 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void		mg_pixel_put(t_img_buff *data, int x, int y, unsigned int color);
 t_complex	complex_addition(t_complex cn1, t_complex cn2);
 t_complex	complex_init(double r_p, double i_p);
 t_complex	complex_square(t_complex cn);
+char    	*ft_rgb_to_hex(t_color color);
+t_color	    init_color(int r, int g, int b);
 
 #endif
