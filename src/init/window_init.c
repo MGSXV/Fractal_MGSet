@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 20:12:02 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/11 20:22:09 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:47:18 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_init_data(t_img_buff *data)
 	if (!data->data_buff.mlx_p)
 		ft_error_exit("Could not initialize the MLX!\n", data);
 	data->data_buff.win_p = mlx_new_window(data->data_buff.mlx_p,
-			WINDOW_WIDTH, WINDOW_HEIGHT, "Fract-ol MGSet");
+			data->screen.window_width, data->screen.window_height, "Fract-ol MGSet");
 	if (!data->data_buff.win_p)
 		ft_error_exit("Could not initialize the windows!\n", data);
 	data->data_buff.img_p = mlx_new_image(data->data_buff.mlx_p,
-			WINDOW_WIDTH, WINDOW_HEIGHT);
+			data->screen.window_width, data->screen.window_height);
 	if (!data->data_buff.img_p)
 		ft_error_exit("Could not initialize the windows!\n", data);
 }
