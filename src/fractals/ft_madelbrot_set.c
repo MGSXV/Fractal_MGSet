@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 22:26:20 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/15 17:18:00 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:29:06 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ static int	calculate_mandelbrot(t_coor *coord, t_img_buff *data)
 	return (i);
 }
 
+int change_color(int color)
+{
+	int red;
+	int green;
+	int blue;
+
+	red = (color / 65536) ;
+	green = ((color - (red * 65536)) / (16 * 16));
+	blue = (color - (red * 65536) - (green * 16 * 16));
+	return (red * 65536) + (green * 16 * 16) + blue;
+}
+
 void	ft_mandelbrot(t_img_buff *data)
 {
 	t_coor		coord;
@@ -54,7 +66,7 @@ void	ft_mandelbrot(t_img_buff *data)
 		{
 			i = calculate_mandelbrot(&coord, data);
 			if (i < data->screen.max_iterations)
-				mg_pixel_put(data, coord.x, coord.y, 0x00FFFFFF);
+				mg_pixel_put(data, coord.x, coord.y, ft_color_handle((BLUE_0), i));
 			coord.x++;
 		}
 		coord.y++;
