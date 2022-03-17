@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 05:12:51 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/14 04:52:25 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:57:32 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,9 @@
 # define LIGHT_YELLOW_0 0xF1E9BF
 # define LIGHT_YELLOW_1 0xF8C95F
 # define DIRTY_YELLOW 0xFFAA00
-
+/*
+ *  Color palets
+ */
+# define PALLET_01 0x012345
+# define PALLET_02 0x111111
 #endif
