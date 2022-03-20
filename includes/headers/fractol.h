@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 16:16:24 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/16 16:23:24 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/20 17:00:38 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void		ft_router(char *flag, t_img_buff *data);
 void		ft_init_data(t_img_buff *data);
 void		ft_new_window(t_img_buff *data);
 void		ft_mandelbrot(t_img_buff *data);
-int			ft_events_router(int keynum, t_img_buff *data);
+int			ft_keyboard_events_router(int keynum, t_img_buff *data);
+int	        ft_mouse_events_router(int button, int x, int y, t_img_buff *data);
 int			ft_close_window(t_img_buff *data);
 void		mg_pixel_put(t_img_buff *data, int x, int y, unsigned int color);
 t_complex	complex_addition(t_complex cn1, t_complex cn2);
 t_complex	complex_init(double r_p, double i_p);
 t_complex	complex_square(t_complex cn);
 int         ft_color_handle(int color, int i);
+int         ft_mouse_index(int x, int y, int button, t_img_buff *data);
 
 #endif

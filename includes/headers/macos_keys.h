@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 05:12:51 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/16 17:57:32 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/19 22:52:47 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
  */
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
-# define ON_MOUSEDOWN 4
-# define ON_MOUSEUP 5
+# define ON_MOUSESCROLLDOWN 4
+# define ON_MOUSESCROLLUP 5
 # define ON_MOUSEMOVE 6
 # define ON_EXPOSE 2
 # define ON_DESTROY 7

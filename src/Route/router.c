@@ -6,16 +6,29 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:10:34 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/10 17:18:16 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/20 17:02:06 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/headers/fractol.h"
 
-int	ft_events_router(int keynum, t_img_buff *data)
+int	ft_keyboard_events_router(int keynum, t_img_buff *data)
 {
 	if (keynum == ESC_KEY)
 		ft_close_window(data);
+	return (0);
+}
+
+int	ft_mouse_events_router(int keynum, int x, int y, t_img_buff *data)
+{
+	t_coor	coord;
+
+	if (!data)
+		ft_error_exit("", data);
+	coord.x = x;
+	coord.y = y;
+	if (keynum == ON_MOUSESCROLLDOWN)
+		
 	return (0);
 }
 
