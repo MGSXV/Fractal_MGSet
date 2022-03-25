@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:10:34 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/20 17:02:06 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/21 20:02:21 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	ft_mouse_events_router(int keynum, int x, int y, t_img_buff *data)
 	coord.x = x;
 	coord.y = y;
 	if (keynum == ON_MOUSESCROLLDOWN)
-		
+		ft_zoomout(coord, data);
+	if (keynum == ON_MOUSESCROLLUP)
+		ft_zoomin(coord, data);
 	return (0);
 }
 
