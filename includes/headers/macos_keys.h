@@ -6,12 +6,17 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 05:12:51 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/19 22:52:47 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/24 18:39:18 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACOS_KEYS_H
 # define MACOS_KEYS_H
+/*
+ * Sizes
+ */
+# define WINDOW_HEIGHT 920
+# define WINDOW_WIDTH 920
 /*
  * Keyboard codes
  */
