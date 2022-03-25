@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 16:16:24 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/20 17:00:38 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:23:36 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ t_complex	complex_init(double r_p, double i_p);
 t_complex	complex_square(t_complex cn);
 int         ft_color_handle(int color, int i);
 int         ft_mouse_index(int x, int y, int button, t_img_buff *data);
+int	        ft_zoomout(t_coor coord, t_img_buff *data);
+int         ft_zoomin(t_coor coord, t_img_buff *data);
 
 #endif
