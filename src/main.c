@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:28:53 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/04/16 22:42:51 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/04/16 23:21:45 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ Try \"--help\" for more information.\n", fractol, true);
 		ft_init_data(fractol);
 		ft_router(v[1], fractol);
 		mlx_key_hook(fractol->mlx_req.win_p, &key_press_handler, fractol);
-		mlx_hook(fractol->mlx_req.win_p, DESTROY_NOTIFY, 0, &ft_close_window, fractol);
+		mlx_hook(fractol->mlx_req.win_p, DESTROY_NOTIFY, 0,
+			&ft_close_window, fractol);
 		mlx_hook(fractol->mlx_req.win_p, 4, 0, &mouse_press_handler, fractol);
 		mlx_hook(fractol->mlx_req.win_p, 6, 0, &mouse_move_handler, fractol);
 		mlx_loop_hook(fractol->mlx_req.mlx_p, &default_handler, fractol);
