@@ -6,13 +6,13 @@
 #    By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:33:08 by sel-kham          #+#    #+#              #
-#    Updated: 2022/03/15 23:31:31 by sel-kham         ###   ########.fr        #
+#    Updated: 2022/04/16 22:20:04 by sel-kham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # FLAGS
 CFLAGS := -Wall -Wextra -Werror
-MLX_FLAGS := -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS := -lmlx -framework OpenGL -framework AppKit -Ofast
 
 # DIRECTORIES
 INC_DIR := includes
@@ -36,7 +36,7 @@ SRC := $(HELPERS)/ft_error_exit.c $(HELPERS)/mg_pixel_put.c $(HELPERS)/ft_comple
 		$(HANDLERS)/keyboard_events.c $(HANDLERS)/mouse_events.c\
 		$(ROUTE)/router.c\
 		$(INIT)/window_init.c\
-		$(FREACTALS)/ft_madelbrot_set.c
+		$(FREACTALS)/ft_madelbrot_set.c $(FREACTALS)/ft_julia.c $(FREACTALS)/ft_burning_ship.c $(FREACTALS)/fractal.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 MAIN := $(SRC_DIR)/main.c

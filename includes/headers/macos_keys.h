@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 05:12:51 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/03/24 18:39:18 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/04/16 22:59:25 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /*
  * Sizes
  */
-# define WINDOW_HEIGHT 920
-# define WINDOW_WIDTH 920
+# define WINDOW_HEIGHT 700
+# define WINDOW_WIDTH 700
 /*
  * Keyboard codes
  */
@@ -26,6 +26,7 @@
 # define DOWN_ARROW_KEY 125
 # define UP_ARROW_KEY 126
 # define R_KEY 15
+# define P_KEY 35
 # define W_KEY 13
 # define A_KEY 0
 # define S_KEY 1
@@ -63,6 +64,7 @@
 # define LIGHT_YELLOW_0 0xF1E9BF
 # define LIGHT_YELLOW_1 0xF8C95F
 # define DIRTY_YELLOW 0xFFAA00
+# define BLACK 0x000000
 /*
  *  Color palets
  */
