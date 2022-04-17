@@ -6,7 +6,7 @@
 /*   By: sel-kham <sel-kham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:28:53 by sel-kham          #+#    #+#             */
-/*   Updated: 2022/04/16 23:21:45 by sel-kham         ###   ########.fr       */
+/*   Updated: 2022/04/17 01:06:50 by sel-kham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,11 @@ static void	init_mlx(t_mlx *mlx)
 	mlx->img_p = NULL;
 }
 
-int	main(int c, char **v)
+static int	check_args(int c, char **v, t_fractol *fractol)
 {
-	t_fractol	*fractol;
-	char		*flag;
+	char	*flag;
 
 	flag = "--help";
-	fractol = (t_fractol *) malloc(sizeof(t_fractol));
-	if (!fractol)
-		ft_error_exit("Unkown error!", fractol, true);
-	init_mlx(&(fractol->mlx_req));
 	if (c != 2)
 		ft_error_exit("Error: No valid argument was provided. \
 Try \"--help\" for more information.\n", fractol, true);
@@ -38,7 +33,18 @@ Try \"--help\" for more information.\n", fractol, true);
 \n\t[*] Mandelbrot set (-m)\n\t[*] Julia set (-j)\
 \n\t[*] Some other Fractal here (-s)\n", fractol, true);
 	}
-	else
+	return (1);
+}
+
+int	main(int c, char **v)
+{
+	t_fractol	*fractol;
+
+	fractol = (t_fractol *) malloc(sizeof(t_fractol));
+	if (!fractol)
+		ft_error_exit("Unkown error!", fractol, true);
+	init_mlx(&(fractol->mlx_req));
+	if (check_args(c, v, fractol))
 	{
 		ft_init_data(fractol);
 		ft_router(v[1], fractol);
